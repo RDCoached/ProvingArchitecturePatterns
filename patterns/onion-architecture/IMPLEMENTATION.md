@@ -101,3 +101,53 @@ This document tracks the step-by-step implementation of the Onion Architecture p
 ✅ Rich domain model with actual business logic (not anemic)
 
 **Next:** Implement Application layer with use cases and repository interfaces.
+
+---
+
+### Step 3: Application Layer Implementation
+
+**Date:** 2026-03-24
+
+**Objective:** Create use case handlers and define infrastructure interfaces.
+
+**Actions:**
+
+1. Created **Repository Interfaces** (owned by Application, implemented by Infrastructure):
+   - `IOrderRepository` - Defines contract for order persistence
+   - Methods: GetByIdAsync, GetByCustomerIdAsync, AddAsync, UpdateAsync, DeleteAsync, ExistsAsync
+   - **Key insight:** Interface lives in Application layer, not Infrastructure (dependency inversion)
+
+2. Created **DTOs** for data transfer:
+   - `OrderDto` - Order data transfer object
+   - `OrderItemDto` - Order item data transfer object
+   - Flat structures for API responses, no domain logic
+
+3. Created **Command Handlers** (write operations):
+   - `CreateOrderCommandHandler` - Creates new orders
+   - `AddOrderItemCommandHandler` - Adds items to existing orders
+   - `ConfirmOrderCommandHandler` - Confirms draft orders
+   - Each handler orchestrates domain logic through entities
+
+4. Created **Query Handlers** (read operations):
+   - `GetOrderByIdQueryHandler` - Retrieves single order
+   - `GetOrdersByCustomerQueryHandler` - Retrieves customer's orders
+   - Returns DTOs, not domain entities
+
+**Key Design Decisions:**
+
+- **Interface ownership:** Interfaces defined in Application, not Infrastructure (dependency inversion principle)
+- **Command/Query separation:** Clear distinction between writes (commands) and reads (queries)
+- **Thin handlers:** Handlers orchestrate, domain entities contain business logic
+- **DTO mapping:** Domain entities mapped to DTOs at application boundary
+- **Result pattern usage:** Handlers return Result<T> for explicit success/failure
+
+**Dependencies:**
+- Application → Domain (only)
+- No references to Infrastructure or API
+
+**Verified:**
+✅ Application project builds successfully
+✅ Only references Domain project
+✅ Interfaces define infrastructure contracts
+
+**Next:** Implement Infrastructure layer with EF Core repository implementations.
