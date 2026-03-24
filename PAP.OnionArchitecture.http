@@ -1,6 +1,0 @@
-@PAP.OnionArchitecture_HostAddress = http://localhost:5082
-
-GET {{PAP.OnionArchitecture_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

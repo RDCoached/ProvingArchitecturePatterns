@@ -1,5 +1,24 @@
+# Build artifacts
 bin/
 obj/
 /packages/
+
+# IDE files
+.idea/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
 riderModule.iml
 /_ReSharper.Caches/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# MCP config (local)
+.mcp.json
+
+# Install scripts (local)
+install-dotnet-kit.sh
