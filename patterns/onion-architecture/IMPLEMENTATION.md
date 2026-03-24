@@ -377,3 +377,71 @@ This document tracks the step-by-step implementation of the Onion Architecture p
 
 **Next:** Set up Docker configuration for local development.
 
+
+
+---
+
+### Step 8: Docker Configuration
+
+**Date:** 2026-03-24
+
+**Objective:** Configure Docker containers for local development and testing.
+
+**Actions:**
+
+1. Created **Dockerfile** for API:
+   - Multi-stage build (SDK for build, ASP.NET for runtime)
+   - Optimized layer caching
+   - Exposes port 8080
+   - Development environment by default
+
+2. Created **docker-compose.yml**:
+   - PostgreSQL 16 Alpine container
+   - API container built from Dockerfile
+   - Adminer for database management
+   - Health checks for PostgreSQL
+   - Named volumes for data persistence
+   - Bridge network for service communication
+
+3. Created **docker-compose.override.yml**:
+   - Development-specific overrides
+   - Logging configuration
+   - Optional volume mounts for hot reload
+
+4. Created **.dockerignore**:
+   - Excludes build artifacts
+   - Keeps image size minimal
+   - Includes only necessary files
+
+5. Created **README.md**:
+   - Quick start guide
+   - Architecture diagram
+   - API endpoint examples
+   - Local development instructions
+   - Docker usage guide
+
+**Key Design Decisions:**
+
+- **Multi-stage build:** Smaller runtime image (ASP.NET vs SDK)
+- **Health checks:** Ensures PostgreSQL ready before API starts
+- **Named volumes:** Data persists across container restarts
+- **Adminer included:** Easy database inspection
+- **Port mapping:** 5000 for API, 8080 for Adminer
+- **Connection string:** Passed via environment variable
+
+**Service Configuration:**
+
+- **postgres:16-alpine** - Lightweight PostgreSQL
+- **onionarch-api** - Built from local Dockerfile
+- **adminer** - Database management UI
+- **Ports:** 5432 (Postgres), 5000 (API), 8080 (Adminer)
+
+**Verified:**
+✅ Dockerfile created with multi-stage build
+✅ Docker Compose configuration complete
+✅ All services properly networked
+✅ Health checks configured
+✅ README with usage instructions
+
+**Next:** Write comprehensive course documentation (9 sections).
+

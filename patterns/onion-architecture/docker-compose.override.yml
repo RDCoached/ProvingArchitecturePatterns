@@ -1,0 +1,12 @@
+# Override file for development
+# This file is automatically merged with docker-compose.yml
+
+services:
+  api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Logging__LogLevel__Default=Information
+      - Logging__LogLevel__Microsoft.AspNetCore=Warning
+    volumes:
+      # Enable hot reload during development (optional)
+      - ./src/OnionArch.Api:/app/src:ro
