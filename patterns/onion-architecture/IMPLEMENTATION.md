@@ -332,3 +332,48 @@ This document tracks the step-by-step implementation of the Onion Architecture p
 
 **Next:** Create violation examples to demonstrate what fit functions catch.
 
+
+
+---
+
+### Step 7: Violation Examples
+
+**Date:** 2026-03-24
+
+**Objective:** Create examples of broken implementations to demonstrate what fit functions catch.
+
+**Actions:**
+
+1. Created **violations/** directory structure with README
+
+2. Created **Domain Depends on EF Core** violation:
+   - Modified csproj showing Domain referencing Microsoft.EntityFrameworkCore
+   - Demonstrates infrastructure coupling in domain
+   - Caught by: Domain_Should_Only_Reference_System_Libraries
+
+3. Created **API Calls Infrastructure Directly** violation:
+   - Shows bypassing Application interfaces
+   - Direct instantiation of Infrastructure classes
+   - Demonstrates violation of dependency inversion
+
+4. Created **Application Depends on Infrastructure** violation:
+   - Modified csproj creating circular dependency
+   - Shows Application → Infrastructure reference
+   - Caught by: Application_Should_Not_Depend_On_Infrastructure_Or_Api
+
+**Key Design Decisions:**
+
+- **Educational focus:** Each violation includes detailed explanation
+- **Clear naming:** .VIOLATION suffix prevents accidental use
+- **Comprehensive docs:** README in each violation explains the problem
+- **Reproducible:** Step-by-step instructions to test each violation
+- **Safe:** Violations isolated in separate directory
+
+**Verified:**
+✅ 3 violation examples created
+✅ Each demonstrates a different architectural rule
+✅ Documentation explains why violation is wrong
+✅ Instructions for testing violations provided
+
+**Next:** Set up Docker configuration for local development.
+
