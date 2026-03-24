@@ -16,6 +16,11 @@ public sealed class Order
     public DateTime CreatedAt { get; private set; }
     public DateTime? ConfirmedAt { get; private set; }
 
+    // Parameterless constructor for EF Core
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor
+    private Order() { }
+#pragma warning restore CS8618
+
     private Order(OrderId id, CustomerId customerId, string currency)
     {
         Id = id;

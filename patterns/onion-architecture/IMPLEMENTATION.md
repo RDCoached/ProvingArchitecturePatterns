@@ -151,3 +151,72 @@ This document tracks the step-by-step implementation of the Onion Architecture p
 ✅ Interfaces define infrastructure contracts
 
 **Next:** Implement Infrastructure layer with EF Core repository implementations.
+
+---
+
+### Step 4: Infrastructure Layer Implementation
+
+**Date:** 2026-03-24
+
+**Objective:** Implement infrastructure concerns using EF Core and PostgreSQL.
+
+**Actions:**
+
+1. Added **NuGet Packages**:
+   - Microsoft.EntityFrameworkCore (10.0.5)
+   - Microsoft.EntityFrameworkCore.Design (10.0.5)
+   - Npgsql.EntityFrameworkCore.PostgreSQL (10.0.1)
+
+2. Created **DbContext**:
+   - `ApplicationDbContext` - Main database context
+   - Configures entities using separate configuration classes
+   - Clean separation between domain and persistence concerns
+
+3. Created **Entity Configurations** (EF Core mapping):
+   - `OrderConfiguration` - Maps Order aggregate to database
+     * Value conversions for strongly-typed IDs (OrderId, CustomerId)
+     * Owned entity for Money value object
+     * Cascade delete for order items
+   - `OrderItemConfiguration` - Maps OrderItem entity
+     * Shadow property for database-generated ID
+     * Value conversions for ProductId and Quantity
+     * Owned entities for Money values
+
+4. Created **Repository Implementation**:
+   - `OrderRepository` implements `IOrderRepository` from Application layer
+   - Uses EF Core for data access
+   - Includes navigation properties in queries
+   - SaveChanges pattern for persistence
+
+5. Created **Design-Time Factory**:
+   - `ApplicationDbContextFactory` for EF Core migrations
+   - Allows migrations without full API startup
+
+6. Created **Database Migration**:
+   - InitialCreate migration with Orders and OrderItems tables
+   - Proper column types, constraints, and relationships
+
+7. Updated **Domain Entities** for EF Core compatibility:
+   - Added parameterless private constructors to Order and OrderItem
+   - Required for EF Core materialization
+   - Doesn't compromise domain encapsulation (still private)
+
+**Key Design Decisions:**
+
+- **Dependency inversion demonstrated:** Infrastructure implements interfaces defined in Application
+- **Value object persistence:** Money is persisted as owned entity, not separate table
+- **Strongly-typed ID conversions:** EF Core converts between Guid and strongly-typed IDs
+- **Shadow properties:** OrderItem uses shadow property for database ID (not exposed in domain)
+- **PostgreSQL choice:** Modern, open-source, production-ready database
+- **Migration assembly:** Migrations live in Infrastructure project where DbContext is
+
+**Dependencies:**
+- Infrastructure → Application → Domain
+- Infrastructure has EF Core packages, Domain/Application do not
+
+**Verified:**
+✅ Infrastructure project builds successfully
+✅ Implements Application interfaces
+✅ Database migration created successfully
+
+**Next:** Implement API layer with minimal APIs and dependency injection.

@@ -9,6 +9,11 @@ public sealed class OrderItem
     public Money UnitPrice { get; private set; }
     public Money TotalPrice { get; private set; }
 
+    // Parameterless constructor for EF Core
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor
+    private OrderItem() { }
+#pragma warning restore CS8618
+
     private OrderItem(ProductId productId, Quantity quantity, Money unitPrice)
     {
         ProductId = productId;
