@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAP.OnionArchitecture", "PAP.OnionArchitecture.csproj", "{D29B68E8-AD76-4E7F-9D38-39457DD4ABFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D29B68E8-AD76-4E7F-9D38-39457DD4ABFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D29B68E8-AD76-4E7F-9D38-39457DD4ABFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D29B68E8-AD76-4E7F-9D38-39457DD4ABFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D29B68E8-AD76-4E7F-9D38-39457DD4ABFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
