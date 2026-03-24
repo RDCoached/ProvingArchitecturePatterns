@@ -277,3 +277,58 @@ This document tracks the step-by-step implementation of the Onion Architecture p
 ✅ HTTP endpoints follow REST conventions
 
 **Next:** Implement fit functions to validate onion architecture rules.
+
+
+---
+
+### Step 6: Fit Functions Implementation
+
+**Date:** 2026-03-24
+
+**Objective:** Create architectural tests that validate onion architecture principles.
+
+**Actions:**
+
+1. Created **DependencyRules** fit functions:
+   - Domain_Should_Not_Depend_On_Any_Other_Layer
+   - Domain_Should_Only_Reference_System_Libraries
+   - Application_Should_Not_Depend_On_Infrastructure_Or_Api
+   - Application_Can_Only_Depend_On_Domain
+   - Infrastructure_Should_Not_Depend_On_Api
+   - Infrastructure_Must_Depend_On_Application
+
+2. Created **LayerIsolation** fit functions:
+   - Domain_Entities_Should_Be_Public
+   - Application_Interfaces_Should_Be_Public
+   - Infrastructure_Implementations_Should_Not_Be_Public
+   - Value_Objects_Should_Be_Sealed
+
+3. Created **DomainPurity** fit functions:
+   - Domain_Should_Not_Have_EF_Core_Attributes
+   - Domain_Entities_Should_Have_Private_Setters
+   - Domain_Should_Not_Reference_Infrastructure_Concerns
+   - Domain_Entities_Should_Be_In_Correct_Namespace
+
+4. Created **InterfaceOwnership** fit functions:
+   - Repository_Interfaces_Should_Be_In_Application_Layer
+   - Infrastructure_Should_Not_Define_Interfaces
+   - Repository_Implementations_Should_Be_In_Infrastructure
+   - Interfaces_Should_Be_Named_With_I_Prefix
+
+**Key Design Decisions:**
+
+- **NetArchTest.Rules:** Used for declarative architecture testing
+- **Fail-fast:** Tests fail immediately when violations detected
+- **Continuous validation:** Run with every build/CI pipeline
+- **Clear error messages:** Violations clearly state what rule was broken
+- **Comprehensive coverage:** 18 tests covering all critical architecture rules
+
+**Verified:**
+✅ All 18 fit function tests pass
+✅ Dependency flow validated (inward only)
+✅ Domain purity enforced (no infrastructure references)
+✅ Interface ownership proven (Application owns interfaces)
+✅ Layer isolation confirmed
+
+**Next:** Create violation examples to demonstrate what fit functions catch.
+
