@@ -220,3 +220,60 @@ This document tracks the step-by-step implementation of the Onion Architecture p
 ✅ Database migration created successfully
 
 **Next:** Implement API layer with minimal APIs and dependency injection.
+
+---
+
+### Step 5: API Layer Implementation
+
+**Date:** 2026-03-24
+
+**Objective:** Create HTTP endpoints and wire up dependency injection.
+
+**Actions:**
+
+1. Configured **Dependency Injection** in Program.cs:
+   - DbContext with PostgreSQL connection string
+   - Repository registrations (IOrderRepository → OrderRepository)
+   - Command/Query handler registrations via extension method
+   - Automatic database migration in development
+
+2. Created **Minimal API Endpoints**:
+   - POST /api/orders - Create new order
+   - POST /api/orders/{id}/items - Add item to order
+   - POST /api/orders/{id}/confirm - Confirm order
+   - GET /api/orders/{id} - Get order by ID
+   - GET /api/orders/customer/{customerId} - Get customer orders
+   - All endpoints use proper HTTP verbs and status codes
+
+3. Created **Request Models**:
+   - CreateOrderRequest
+   - AddOrderItemRequest
+   - Separate from domain entities and DTOs
+
+4. Created **Extension Methods**:
+   - ServiceCollectionExtensions.AddApplicationHandlers() - Registers all handlers
+   - OrderEndpoints.MapOrderEndpoints() - Groups order routes
+
+5. Updated **Configuration**:
+   - appsettings.json with database connection string
+   - OpenAPI/Swagger configuration for API documentation
+
+**Key Design Decisions:**
+
+- **Composition root:** API layer is where all dependencies are wired together
+- **Minimal APIs:** Modern .NET approach, less ceremony than controllers
+- **Result pattern at API boundary:** Commands/queries return Result<T>, endpoints map to HTTP status codes
+- **Endpoint grouping:** Related endpoints grouped with /api/orders prefix
+- **Dependency injection:** Constructor injection for handlers in endpoints
+- **Development convenience:** Auto-migration on startup in dev environment
+
+**Dependencies:**
+- Api → Infrastructure → Application → Domain (full dependency chain)
+- Api references all layers to wire them together
+
+**Verified:**
+✅ API project builds successfully (with minor version conflict warnings)
+✅ All layers properly wired through DI
+✅ HTTP endpoints follow REST conventions
+
+**Next:** Implement fit functions to validate onion architecture rules.
