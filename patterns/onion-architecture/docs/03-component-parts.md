@@ -228,11 +228,11 @@ public sealed class OrderConfiguration : IEntityTypeConfiguration<Order>
 - Handles value objects as owned entities
 - Maps private fields
 
-## 4. API Layer (Presentation)
+## 4. API Layer
 
 **Location in onion:** Outermost layer
 **Dependencies:** All other layers (for DI wiring)
-**Responsibility:** HTTP endpoints, composition root
+**Responsibility:** HTTP endpoints, composition root, external interface
 
 ### Components:
 

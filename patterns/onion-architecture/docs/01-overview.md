@@ -8,7 +8,7 @@ The fundamental rule: **dependencies flow inward only**.
 
 ```
 ┌─────────────────────────────────────┐
-│         API / UI Layer              │  ← Presentation, HTTP, Controllers
+│         API Layer                   │  ← HTTP Endpoints, Controllers
 │  ┌───────────────────────────────┐  │
 │  │   Infrastructure Layer        │  │  ← Databases, File Systems, APIs
 │  │  ┌─────────────────────────┐  │  │
