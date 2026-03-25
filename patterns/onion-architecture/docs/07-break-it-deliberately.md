@@ -152,12 +152,27 @@ public sealed class Order
 }
 ```
 
-### What Breaks (Conceptually)
+### Run the Fit Function
 
-While this specific violation might not be caught by NetArchTest (it's more of a code review/convention issue), it demonstrates why encapsulation matters:
+```bash
+dotnet test fit-functions/OnionArch.FitFunctions/
+```
+
+### What Breaks
+
+```
+❌ Failed! DomainPurity.Domain_Entities_Should_Have_Private_Setters
+
+Error Message:
+  Expected violations to be empty, but found 1 item(s):
+  Order.Status has public setter
+```
+
+### Why It Matters
+
+Without private setters, business rules can be bypassed:
 
 ```csharp
-// Without private setter, business rules can be bypassed:
 var order = Order.Create(customerId);
 // Should call: order.Confirm()
 // But instead:
@@ -166,12 +181,13 @@ order.Status = OrderStatus.Confirmed;  // ❌ Skipped validation!
 
 ### The Lesson
 
-Some architectural rules need:
-- **Static analysis** (fit functions) - For dependency and structure rules
-- **Code review** - For encapsulation and design patterns
-- **Team conventions** - Documented in CLAUDE.md or team guidelines
+The fit function uses reflection to inspect all entity properties and catches public setters automatically. This ensures domain entities maintain proper encapsulation and force business logic through methods rather than property mutations.
 
-Fit functions catch what can be automated. The rest needs discipline.
+### Restore
+
+```bash
+git restore src/OnionArch.Domain/Entities/Order.cs
+```
 
 ## Violation 5: Anemic Domain Model
 
@@ -227,7 +243,7 @@ You still need:
 | Interface in wrong layer | ✅ Yes | `Repository_Interfaces_Should_Be_In_Application_Layer` |
 | Circular dependencies | ✅ Yes (build + test) | Compiler + `DependencyRules` |
 | Value objects not sealed | ✅ Yes | `Value_Objects_Should_Be_Sealed` |
-| Public setters | ❌ No | Code review needed |
+| Public setters on entities | ✅ Yes | `Domain_Entities_Should_Have_Private_Setters` |
 | Anemic domain model | ❌ No | Design review needed |
 | Poor naming | ❌ No | Team conventions |
 
