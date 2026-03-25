@@ -32,6 +32,22 @@
     <Project Path="tests/OnionArch.Infrastructure.Tests/OnionArch.Infrastructure.Tests.csproj" />
   </Folder>
   <Folder Name="/violations/">
-    <File Path="violations/.gitkeep" />
+    <File Path="violations/README.md" />
+    <Folder Name="/violations/domain-depends-on-ef-core/">
+      <File Path="violations/domain-depends-on-ef-core/README.md" />
+      <File Path="violations/domain-depends-on-ef-core/OnionArch.Domain.csproj.VIOLATION" />
+    </Folder>
+    <Folder Name="/violations/application-depends-on-infrastructure/">
+      <File Path="violations/application-depends-on-infrastructure/README.md" />
+      <File Path="violations/application-depends-on-infrastructure/OnionArch.Application.csproj.VIOLATION" />
+    </Folder>
+    <Folder Name="/violations/interface-in-wrong-layer/">
+      <File Path="violations/interface-in-wrong-layer/README.md" />
+      <File Path="violations/interface-in-wrong-layer/IOrderRepository.cs.VIOLATION" />
+    </Folder>
+    <Folder Name="/violations/public-setters/">
+      <File Path="violations/public-setters/README.md" />
+      <File Path="violations/public-setters/Order.cs.VIOLATION" />
+    </Folder>
   </Folder>
 </Solution>

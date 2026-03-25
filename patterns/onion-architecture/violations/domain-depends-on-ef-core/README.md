@@ -21,13 +21,15 @@ The modified `OnionArch.Domain.csproj` includes:
 
 ## Which Fit Function Catches This
 
-**Test:** `Domain_Should_Only_Reference_System_Libraries`
+**Test:** `Domain_Should_Not_Reference_Infrastructure_Concerns`
 
 **Error message:**
 ```
-Domain should not reference infrastructure libraries.
+Domain must be infrastructure-agnostic.
 Violations: [Types that reference Microsoft.EntityFrameworkCore]
 ```
+
+**Note:** The test `Domain_Should_Only_Reference_System_Libraries` would also catch this violation.
 
 ## How to Reproduce
 
