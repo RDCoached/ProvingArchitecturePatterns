@@ -24,15 +24,33 @@ public class DomainPurity
     [Fact]
     public void Domain_Entities_Should_Have_Private_Setters()
     {
-        // This test verifies encapsulation - properties should not have public setters
-        // In a real scenario, you'd use reflection to verify this
-        // For now, this is a placeholder for the concept
+        // Arrange
+        var entityTypes = typeof(Domain.Entities.Order).Assembly
+            .GetTypes()
+            .Where(t => t.Namespace == "OnionArch.Domain.Entities" && t.IsClass && !t.IsAbstract)
+            .ToList();
 
-        // The domain entities use private setters, which we can verify manually:
-        // - Order properties all have private set
-        // - OrderItem properties all have private set
+        var violations = new List<string>();
 
-        Assert.True(true, "Domain entities use private setters for encapsulation");
+        // Act
+        foreach (var entityType in entityTypes)
+        {
+            var properties = entityType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+
+            foreach (var property in properties)
+            {
+                var setter = property.GetSetMethod();
+
+                // Property has a public setter - violation!
+                if (setter != null && setter.IsPublic)
+                {
+                    violations.Add($"{entityType.Name}.{property.Name} has public setter");
+                }
+            }
+        }
+
+        // Assert
+        Assert.Empty(violations);
     }
 
     [Fact]
