@@ -78,19 +78,14 @@ public class DomainPurity
         // Arrange & Act
         var result = Types.InAssembly(typeof(Domain.Entities.Order).Assembly)
             .That()
-            .AreClasses()
-            .And()
-            .DoNotResideInNamespace("OnionArch.Domain.ValueObjects")
-            .And()
-            .DoNotResideInNamespace("OnionArch.Domain.Common")
-            .And()
-            .DoNotResideInNamespace("OnionArch.Domain.Enums")
-            .Should()
             .ResideInNamespace("OnionArch.Domain.Entities")
+            .Should()
+            .BeClasses()
             .GetResult();
 
-        // Assert - This will fail but demonstrates the intent
-        // Some classes might be in root namespace, which is okay for this example
-        Assert.True(true, "Domain organization verified");
+        // Assert
+        Assert.True(result.IsSuccessful,
+            $"All types in Entities namespace should be classes. " +
+            $"Violations: {string.Join(", ", result.FailingTypeNames ?? [])}");
     }
 }
