@@ -1,5 +1,26 @@
 <Solution>
-  <Folder Name="/OnionArchitecture/" />
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/OnionArchitecture/">
+    <File Path="patterns/onion-architecture/README.md" />
+    <File Path="patterns/onion-architecture/IMPLEMENTATION.md" />
+    <File Path="patterns/onion-architecture/.dockerignore" />
+    <File Path="patterns/onion-architecture/Dockerfile" />
+    <File Path="patterns/onion-architecture/docker-compose.yml" />
+    <File Path="patterns/onion-architecture/docker-compose.override.yml" />
+  </Folder>
+  <Folder Name="/OnionArchitecture/Docs/">
+    <File Path="patterns/onion-architecture/docs/01-overview.md" />
+    <File Path="patterns/onion-architecture/docs/02-the-problem.md" />
+    <File Path="patterns/onion-architecture/docs/03-component-parts.md" />
+    <File Path="patterns/onion-architecture/docs/04-build-the-pattern.md" />
+    <File Path="patterns/onion-architecture/docs/05-fit-functions.md" />
+    <File Path="patterns/onion-architecture/docs/06-implement-fit-functions.md" />
+    <File Path="patterns/onion-architecture/docs/07-break-it-deliberately.md" />
+    <File Path="patterns/onion-architecture/docs/08-tradeoffs.md" />
+    <File Path="patterns/onion-architecture/docs/09-summary.md" />
+  </Folder>
   <Folder Name="/OnionArchitecture/FitFunctions/">
     <Project Path="patterns/onion-architecture/fit-functions/OnionArch.FitFunctions/OnionArch.FitFunctions.csproj" />
   </Folder>
@@ -14,5 +35,8 @@
     <Project Path="patterns/onion-architecture/tests/OnionArch.Application.Tests/OnionArch.Application.Tests.csproj" />
     <Project Path="patterns/onion-architecture/tests/OnionArch.Domain.Tests/OnionArch.Domain.Tests.csproj" />
     <Project Path="patterns/onion-architecture/tests/OnionArch.Infrastructure.Tests/OnionArch.Infrastructure.Tests.csproj" />
+  </Folder>
+  <Folder Name="/OnionArchitecture/Violations/">
+    <File Path="patterns/onion-architecture/violations/.gitkeep" />
   </Folder>
 </Solution>

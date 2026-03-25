@@ -1,0 +1,7 @@
+# Test Results
+TestResults/
+
+# Coverage Reports
+coverage/
+*.coverage
+*.coveragexml

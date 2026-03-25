@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat code coverage">
+        <Configuration>
+          <Format>cobertura</Format>
+          <ExcludeByFile>
+            <!-- Exclude obj/Debug generated files -->
+            <Exclude>**/obj/**/*.cs</Exclude>
+            <!-- Exclude bin/Debug generated files -->
+            <Exclude>**/bin/**/*.cs</Exclude>
+            <!-- Exclude migrations -->
+            <Exclude>**/Migrations/**/*.cs</Exclude>
+          </ExcludeByFile>
+          <ExcludeByAttribute>
+            <!-- Exclude code with GeneratedCode attribute -->
+            <Exclude>GeneratedCode</Exclude>
+            <Exclude>CompilerGenerated</Exclude>
+          </ExcludeByAttribute>
+          <ExcludeByNamespace>
+            <!-- Exclude auto-generated namespaces -->
+            <Exclude>Microsoft.AspNetCore.OpenApi.Generated</Exclude>
+            <Exclude>System.Runtime.CompilerServices</Exclude>
+          </ExcludeByNamespace>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

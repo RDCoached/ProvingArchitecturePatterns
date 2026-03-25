@@ -9,8 +9,7 @@ public static class OrderEndpoints
     public static void MapOrderEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/orders")
-            .WithTags("Orders")
-            .WithOpenApi();
+            .WithTags("Orders");
 
         // POST /api/orders - Create a new order
         group.MapPost("", async (

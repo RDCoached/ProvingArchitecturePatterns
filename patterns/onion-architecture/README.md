@@ -26,8 +26,9 @@ docker-compose down -v
 
 ### Access Points
 
-- **API**: http://localhost:5000/api/orders
-- **OpenAPI**: http://localhost:5000/openapi/v1.json (in development)
+- **API**: http://localhost:5001/api/orders
+- **API Documentation (Scalar)**: http://localhost:5001/scalar/v1
+- **OpenAPI Spec**: http://localhost:5001/openapi/v1.json
 - **Adminer** (Database UI): http://localhost:8080
   - System: PostgreSQL
   - Server: postgres
@@ -128,7 +129,7 @@ dotnet test fit-functions/OnionArch.FitFunctions/
 
 ### Create Order
 ```http
-POST http://localhost:5000/api/orders
+POST http://localhost:5001/api/orders
 Content-Type: application/json
 
 {
@@ -139,7 +140,7 @@ Content-Type: application/json
 
 ### Add Order Item
 ```http
-POST http://localhost:5000/api/orders/{orderId}/items
+POST http://localhost:5001/api/orders/{orderId}/items
 Content-Type: application/json
 
 {
@@ -151,17 +152,17 @@ Content-Type: application/json
 
 ### Confirm Order
 ```http
-POST http://localhost:5000/api/orders/{orderId}/confirm
+POST http://localhost:5001/api/orders/{orderId}/confirm
 ```
 
 ### Get Order
 ```http
-GET http://localhost:5000/api/orders/{orderId}
+GET http://localhost:5001/api/orders/{orderId}
 ```
 
 ### Get Customer Orders
 ```http
-GET http://localhost:5000/api/orders/customer/{customerId}
+GET http://localhost:5001/api/orders/customer/{customerId}
 ```
 
 ## Key Features

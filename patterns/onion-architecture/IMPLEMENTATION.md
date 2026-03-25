@@ -426,7 +426,7 @@ This document tracks the step-by-step implementation of the Onion Architecture p
 - **Health checks:** Ensures PostgreSQL ready before API starts
 - **Named volumes:** Data persists across container restarts
 - **Adminer included:** Easy database inspection
-- **Port mapping:** 5000 for API, 8080 for Adminer
+- **Port mapping:** 5001 for API, 8080 for Adminer
 - **Connection string:** Passed via environment variable
 
 **Service Configuration:**
@@ -434,7 +434,7 @@ This document tracks the step-by-step implementation of the Onion Architecture p
 - **postgres:16-alpine** - Lightweight PostgreSQL
 - **onionarch-api** - Built from local Dockerfile
 - **adminer** - Database management UI
-- **Ports:** 5432 (Postgres), 5000 (API), 8080 (Adminer)
+- **Ports:** 5432 (Postgres), 5001 (API), 8080 (Adminer)
 
 **Verified:**
 ✅ Dockerfile created with multi-stage build

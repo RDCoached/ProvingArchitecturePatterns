@@ -11,7 +11,7 @@ services:
     volumes:
       - onion-postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U demo"]
+      test: ["CMD-SHELL", "pg_isready -U demo -d onionarch"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -24,7 +24,7 @@ services:
       dockerfile: Dockerfile
     container_name: onionarch-api
     ports:
-      - "5000:8080"
+      - "5001:8080"
     environment:
       - ConnectionStrings__Database=Host=postgres;Database=onionarch;Username=demo;Password=demo123
       - ASPNETCORE_ENVIRONMENT=Development

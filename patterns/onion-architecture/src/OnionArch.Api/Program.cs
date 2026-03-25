@@ -4,6 +4,7 @@ using OnionArch.Api.Extensions;
 using OnionArch.Application.Interfaces;
 using OnionArch.Infrastructure.Persistence;
 using OnionArch.Infrastructure.Repositories;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 
     // Apply migrations automatically in development
     using var scope = app.Services.CreateScope();
