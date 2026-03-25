@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/OnionArchitecture/" />
+  <Folder Name="/OnionArchitecture/FitFunctions/">
+    <Project Path="patterns/onion-architecture/fit-functions/OnionArch.FitFunctions/OnionArch.FitFunctions.csproj" />
+  </Folder>
+  <Folder Name="/OnionArchitecture/Source/">
+    <Project Path="patterns/onion-architecture/src/OnionArch.Api/OnionArch.Api.csproj" />
+    <Project Path="patterns/onion-architecture/src/OnionArch.Application/OnionArch.Application.csproj" />
+    <Project Path="patterns/onion-architecture/src/OnionArch.Domain/OnionArch.Domain.csproj" />
+    <Project Path="patterns/onion-architecture/src/OnionArch.Infrastructure/OnionArch.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/OnionArchitecture/Tests/">
+    <Project Path="patterns/onion-architecture/tests/OnionArch.Api.Tests/OnionArch.Api.Tests.csproj" />
+    <Project Path="patterns/onion-architecture/tests/OnionArch.Application.Tests/OnionArch.Application.Tests.csproj" />
+    <Project Path="patterns/onion-architecture/tests/OnionArch.Domain.Tests/OnionArch.Domain.Tests.csproj" />
+    <Project Path="patterns/onion-architecture/tests/OnionArch.Infrastructure.Tests/OnionArch.Infrastructure.Tests.csproj" />
+  </Folder>
+</Solution>

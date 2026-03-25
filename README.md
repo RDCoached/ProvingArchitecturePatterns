@@ -54,6 +54,7 @@ Each pattern follows this structure:
 
 ```
 ProvingArchitecturePatterns/
+├── ProvingArchitecturePatterns.slnx  # Top-level solution (all patterns)
 ├── patterns/
 │   └── onion-architecture/     # First pattern (complete)
 │       ├── src/                # Source code (Domain, Application, Infrastructure, API)
@@ -65,6 +66,24 @@ ProvingArchitecturePatterns/
 │       ├── IMPLEMENTATION.md   # Step-by-step build log
 │       └── README.md           # Quick start guide
 └── README.md                   # This file
+```
+
+## Working with the Solution
+
+**Open entire course in IDE:**
+```bash
+# Open top-level solution containing all patterns
+dotnet build ProvingArchitecturePatterns.slnx
+```
+
+**Build all patterns:**
+```bash
+dotnet build ProvingArchitecturePatterns.slnx
+```
+
+**Run all tests across all patterns:**
+```bash
+dotnet test ProvingArchitecturePatterns.slnx
 ```
 
 ## Tech Stack
